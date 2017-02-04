@@ -32,6 +32,11 @@ public class TodosController {
             filteredTodos = filterTodosByLimit(filteredTodos, limit);
         }*/
 
+        if(queryParams.containsKey("owner")) {
+            String name = queryParams.get("owner")[0];
+            filteredTodos = filterTodosByOwner(filteredTodos, name);
+        }
+
         if(queryParams.containsKey("contains")) {
             String word = queryParams.get("contains")[0];
             filteredTodos = filterTodosByWord(filteredTodos, word);
@@ -53,6 +58,10 @@ public class TodosController {
 
     public Todos[] filterTodosByWord(Todos[] filteredTodos, String word) {
         return Arrays.stream(filteredTodos).filter(x -> x.body.contains(word)).toArray(Todos[]::new);
+    }
+
+    public Todos[] filterTodosByOwner(Todos[] filteredTodos, String name) {
+        return Arrays.stream(filteredTodos).filter(x -> x.owner.equals(name)).toArray(Todos[]::new);
     }
 
     public Todos[] filterTodosByComplete(Todos[] filteredTodos, boolean status) {
