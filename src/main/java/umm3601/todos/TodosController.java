@@ -28,10 +28,14 @@ public class TodosController {
             filteredTodos = filterTodosByComplete(filteredTodos, complete);
         }
 
-        /*if(queryParams.containsKey("limit")){
+        if(queryParams.containsKey("limit")){
             int limit = Integer.parseInt(queryParams.get("limit")[0]);
-            filteredTodos = filterTodosByLimit(filteredTodos, limit);
-        }*/
+            Todos[] filteredTodos2 =  new Todos[limit];
+            for (int i = 0; i < limit; i++){
+                filteredTodos2[i] = filteredTodos[i];
+            }
+            return filteredTodos2;
+        }
 
         if(queryParams.containsKey("owner")) {
             String name = queryParams.get("owner")[0];
@@ -48,20 +52,21 @@ public class TodosController {
             filteredTodos = filterTodosByCategory(filteredTodos, word);
         }
 
-        
-            return filteredTodos;
+/*        if(queryParams.containsKey("orderBy" )) {
+            String word = queryParams.get("orderBy")[0];
+            //filteredTodos = filterTodosByParameter(filteredTodos, word);
+
+            if ()){
+
+                Arrays.stream(filteredTodos).sort(x -> x.category)           }
+        }*/
+
+        return filteredTodos;
 
     }
 
-    /*public User[] filterTodosById(User[] filteredUsers, String id) {
-        return Arrays.stream(filteredUsers).filter(x -> x.age == age).toArray(User[]::new);
-    }*/
-    /*public Todos[] filterTodosByLimit(Todos[] filteredTodos, int limit) {
-        Todos[] filteredTodos2 =  new Todos[limit];
-        for (int i = 0; i < limit; i++){
-            filteredTodos2[i] = filteredTodos[i];
-        }
-        return filteredTodos2;
+   /* public Todos[] filterTodosByParameter(Todos[] filteredTodos, String word) {
+        return Arrays.stream(filteredTodos).sorted().toArray(Todos[]::new);
     }*/
 
     public Todos[] filterTodosByCategory(Todos[] filteredTodos, String word) {
