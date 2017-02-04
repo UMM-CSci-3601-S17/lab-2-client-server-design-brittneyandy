@@ -20,20 +20,20 @@ public class TodosController {
     //List all todos
     public Todos[] listTodos(Map<String, String[]> queryParams) {
         Todos[] filteredTodos = todos;
-
-/*        // Filter id if defined
-        if(queryParams.containsKey("_id")) {
-            //int _id = String.parseInt(queryParams.get("age")[0]);
-            String id = "_id";
-            filteredTodos = filterTodosById(filteredTodos, "_id");
-        }*/
-
+        if(queryParams.containsKey("status")) {
+            boolean complete = Boolean.parseBoolean(queryParams.get("status")[0]);
+            filteredTodos = filterTodosByComplete(filteredTodos, complete);
+        }
         return filteredTodos;
     }
 
     /*public User[] filterTodosById(User[] filteredUsers, String id) {
         return Arrays.stream(filteredUsers).filter(x -> x.age == age).toArray(User[]::new);
     }*/
+
+    public Todos[] filterTodosByComplete(Todos[] filteredTodos, boolean status) {
+        return Arrays.stream(filteredTodos).filter(x -> x.status == true).toArray(Todos[]::new);
+    }
 
     public Todos getTodos(String id) {
         return Arrays.stream(todos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
