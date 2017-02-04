@@ -24,8 +24,15 @@ public class TodosController {
         Todos[] filteredTodos = todos;
 
         if(queryParams.containsKey("status")) {
-            boolean complete = Boolean.parseBoolean(queryParams.get("status")[0]);
-            filteredTodos = filterTodosByComplete(filteredTodos, complete);
+            String complete = queryParams.get("status")[0];
+            if(complete.equals("complete")){
+                Boolean completed = true;
+                filteredTodos = filterTodosByComplete(filteredTodos, completed);
+            }
+            if(complete.equals("incomplete")){
+                Boolean incompleted = false;
+                filteredTodos = filterTodosByInComplete(filteredTodos, incompleted);
+            }
         }
 
         if(queryParams.containsKey("limit")){
@@ -58,7 +65,7 @@ public class TodosController {
 
             if ()){
 
-                Arrays.stream(filteredTodos).sort(x -> x.category)           }
+                Arrays.stream(filteredTodos).sort(x -> x.category)status           }
         }*/
 
         return filteredTodos;
@@ -83,6 +90,10 @@ public class TodosController {
 
     public Todos[] filterTodosByComplete(Todos[] filteredTodos, boolean status) {
         return Arrays.stream(filteredTodos).filter(x -> x.status == true).toArray(Todos[]::new);
+    }
+
+    public Todos[] filterTodosByInComplete(Todos[] filteredTodos, boolean status) {
+        return Arrays.stream(filteredTodos).filter(x -> x.status == false).toArray(Todos[]::new);
     }
 
     public Todos getTodos(String id) {
