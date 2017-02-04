@@ -1,4 +1,5 @@
 package umm3601.todos;
+import java.util.Collections;
 
 import com.google.gson.Gson;
 
@@ -41,6 +42,13 @@ public class TodosController {
             String word = queryParams.get("contains")[0];
             filteredTodos = filterTodosByWord(filteredTodos, word);
         }
+
+        if(queryParams.containsKey("category")) {
+            String word = queryParams.get("category")[0];
+            filteredTodos = filterTodosByCategory(filteredTodos, word);
+        }
+
+        
             return filteredTodos;
 
     }
@@ -55,6 +63,10 @@ public class TodosController {
         }
         return filteredTodos2;
     }*/
+
+    public Todos[] filterTodosByCategory(Todos[] filteredTodos, String word) {
+        return Arrays.stream(filteredTodos).filter(x -> x.category.equals(word)).toArray(Todos[]::new);
+    }
 
     public Todos[] filterTodosByWord(Todos[] filteredTodos, String word) {
         return Arrays.stream(filteredTodos).filter(x -> x.body.contains(word)).toArray(Todos[]::new);
