@@ -35,15 +35,6 @@ public class TodosController {
             }
         }
 
-        if(queryParams.containsKey("limit")){
-            int limit = Integer.parseInt(queryParams.get("limit")[0]);
-            Todos[] filteredTodos2 =  new Todos[limit];
-            for (int i = 0; i < limit; i++){
-                filteredTodos2[i] = filteredTodos[i];
-            }
-            return filteredTodos2;
-        }
-
         if(queryParams.containsKey("owner")) {
             String name = queryParams.get("owner")[0];
             filteredTodos = filterTodosByOwner(filteredTodos, name);
@@ -59,7 +50,7 @@ public class TodosController {
             filteredTodos = filterTodosByCategory(filteredTodos, word);
         }
 
-/*        if(queryParams.containsKey("orderBy" )) {
+/*      if(queryParams.containsKey("orderBy" )) {
             String word = queryParams.get("orderBy")[0];
             //filteredTodos = filterTodosByParameter(filteredTodos, word);
 
@@ -67,6 +58,15 @@ public class TodosController {
 
                 Arrays.stream(filteredTodos).sort(x -> x.category)status           }
         }*/
+
+        if(queryParams.containsKey("limit")){
+            int limit = Integer.parseInt(queryParams.get("limit")[0]);
+            Todos[] filteredTodos2 =  new Todos[limit];
+            for (int i = 0; i < limit; i++){
+                filteredTodos2[i] = filteredTodos[i];
+            }
+            return filteredTodos2;
+        }
 
         return filteredTodos;
 
