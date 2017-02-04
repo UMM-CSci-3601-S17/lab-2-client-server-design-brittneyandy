@@ -19,17 +19,41 @@ public class TodosController {
 
     //List all todos
     public Todos[] listTodos(Map<String, String[]> queryParams) {
+
         Todos[] filteredTodos = todos;
+
         if(queryParams.containsKey("status")) {
             boolean complete = Boolean.parseBoolean(queryParams.get("status")[0]);
             filteredTodos = filterTodosByComplete(filteredTodos, complete);
         }
-        return filteredTodos;
+
+        /*if(queryParams.containsKey("limit")){
+            int limit = Integer.parseInt(queryParams.get("limit")[0]);
+            filteredTodos = filterTodosByLimit(filteredTodos, limit);
+        }*/
+
+        if(queryParams.containsKey("contains")) {
+            String word = queryParams.get("contains")[0];
+            filteredTodos = filterTodosByWord(filteredTodos, word);
+        }
+            return filteredTodos;
+
     }
 
     /*public User[] filterTodosById(User[] filteredUsers, String id) {
         return Arrays.stream(filteredUsers).filter(x -> x.age == age).toArray(User[]::new);
     }*/
+    /*public Todos[] filterTodosByLimit(Todos[] filteredTodos, int limit) {
+        Todos[] filteredTodos2 =  new Todos[limit];
+        for (int i = 0; i < limit; i++){
+            filteredTodos2[i] = filteredTodos[i];
+        }
+        return filteredTodos2;
+    }*/
+
+    public Todos[] filterTodosByWord(Todos[] filteredTodos, String word) {
+        return Arrays.stream(filteredTodos).filter(x -> x.body.contains(word)).toArray(Todos[]::new);
+    }
 
     public Todos[] filterTodosByComplete(Todos[] filteredTodos, boolean status) {
         return Arrays.stream(filteredTodos).filter(x -> x.status == true).toArray(Todos[]::new);
