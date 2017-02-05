@@ -3,7 +3,7 @@ package umm3601.todos;
 
 public class Todos {
     String _id;
-    String owner;
+    public String owner;
     Boolean status;
     String body;
     String category;

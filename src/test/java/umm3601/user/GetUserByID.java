@@ -21,4 +21,6 @@ public class GetUserByID {
         User user = userController.getUser("588935f5556f992bf8f37c01");
         assertEquals("Incorrect name", "Bolton Monroe", user.name);
     }
+
+
 }
