@@ -1,4 +1,4 @@
-package umm3601.user;
+package umm3601.todos;
 
 import org.junit.Test;
 import umm3601.todos.Todos;
@@ -6,7 +6,6 @@ import umm3601.todos.TodosController;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import static junit.framework.TestCase.assertEquals;
 
 public class FilterTodosByIDSpec {

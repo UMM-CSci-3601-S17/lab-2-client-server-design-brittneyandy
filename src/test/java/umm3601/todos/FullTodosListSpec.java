@@ -1,4 +1,4 @@
-package umm3601.user;
+package umm3601.todos;
 
 import org.junit.Test;
 import umm3601.todos.Todos;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
- public class FilterTodosBySize {
+ public class FullTodosListSpec {
 
      @Test
      public void totalTodosCount() throws IOException {
