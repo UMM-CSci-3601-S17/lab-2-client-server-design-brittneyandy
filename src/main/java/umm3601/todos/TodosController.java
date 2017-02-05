@@ -61,11 +61,7 @@ public class TodosController {
 
         if(queryParams.containsKey("limit")){
             int limit = Integer.parseInt(queryParams.get("limit")[0]);
-            Todos[] filteredTodos2 =  new Todos[limit];
-            for (int i = 0; i < limit; i++){
-                filteredTodos2[i] = filteredTodos[i];
-            }
-            return filteredTodos2;
+            filterTodosByLimit(filteredTodos, limit);
         }
 
         return filteredTodos;
@@ -75,6 +71,14 @@ public class TodosController {
    /* public Todos[] filterTodosByParameter(Todos[] filteredTodos, String word) {
         return Arrays.stream(filteredTodos).sorted().toArray(Todos[]::new);
     }*/
+
+    public Todos[] filterTodosByLimit(Todos[] filteredTodos, int limit){
+        Todos[] filteredTodos2 =  new Todos[limit];
+        for (int i = 0; i < limit; i++){
+            filteredTodos2[i] = filteredTodos[i];
+        }
+        return filteredTodos2;
+    }
 
     public Todos[] filterTodosByCategory(Todos[] filteredTodos, String word) {
         return Arrays.stream(filteredTodos).filter(x -> x.category.equals(word)).toArray(Todos[]::new);
