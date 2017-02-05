@@ -2,10 +2,10 @@ package umm3601.todos;
 
 
 public class Todos {
-    String _id;
+    public String _id;
     public String owner;
-    Boolean status;
-    String body;
-    String category;
+    public Boolean status;
+    public String body;
+    public String category;
 
 }
