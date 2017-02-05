@@ -15,8 +15,8 @@ public class FilterTodosByContains {
         Todos[] allTodos = todosController.listTodos(new HashMap<>());
         Todos[] BananaTodos = todosController.filterTodosByWord(allTodos, "banana");
         assertEquals("Incorrect number of todos that contains esse in their body", 0, BananaTodos.length);
-        Todos[] ExTodos = todosController.filterTodosByWord(allTodos, "ex");
-        assertEquals("Incorrect number of todos that contains ex in their body", 260, ExTodos.length);
+        Todos[] ReprehenderitTodos = todosController.filterTodosByWord(allTodos, "Reprehenderit");
+        assertEquals("Incorrect number of todos that contains Reprehenderit in their body", 14, ReprehenderitTodos.length);
     }
 
 }
