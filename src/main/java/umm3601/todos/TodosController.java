@@ -64,15 +64,23 @@
                 if (queryParams.get("orderBy")[0].equals("category")){
                     filteredTodos = sortingByCategory(filteredTodos);
                 }
+
+                if (queryParams.get("orderBy")[0].equals("status")){
+                    filteredTodos = sortingByStatus(filteredTodos);
+                }
             }
 
             if(queryParams.containsKey("limit")){
                 int limit = Integer.parseInt(queryParams.get("limit")[0]);
-                filterTodosByLimit(filteredTodos, limit);
+                return filterTodosByLimit(filteredTodos, limit);
             }
 
             return filteredTodos;
 
+        }
+
+        public Todos[] sortingByStatus(Todos[] filteredTodos) {
+            return Arrays.stream(filteredTodos).sorted(Comparator.comparing(x -> x.status)).toArray(Todos[]::new);
         }
 
         public Todos[] sortingByCategory(Todos[] filteredTodos) {
@@ -89,14 +97,6 @@
 
         public Todos[] sortingByID(Todos[] filteredTodos) {
             return Arrays.stream(filteredTodos).sorted(Comparator.comparing(x -> x._id)).toArray(Todos[]::new);
-        }
-
-        public Todos[] filterTodosByLimit(Todos[] filteredTodos, int limit){
-            Todos[] filteredTodos2 =  new Todos[limit];
-            for (int i = 0; i < limit; i++){
-                filteredTodos2[i] = filteredTodos[i];
-            }
-            return filteredTodos2;
         }
 
         public Todos[] filterTodosByCategory(Todos[] filteredTodos, String word) {
@@ -121,6 +121,14 @@
 
         public Todos getTodos(String id) {
             return Arrays.stream(todos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
+        }
+
+        public Todos[] filterTodosByLimit(Todos[] filteredTodos, int limit){
+            Todos[] filteredTodos2 =  new Todos[limit];
+            for (int i = 0; i < limit; i++){
+                filteredTodos2[i] = filteredTodos[i];
+            }
+            return filteredTodos2;
         }
 
 
