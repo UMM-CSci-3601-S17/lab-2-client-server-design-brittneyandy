@@ -10,6 +10,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class FilterUsersByAgeSpec {
 
+
     @Test
     public void filterUsersByAge() throws IOException {
         UserController userController = new UserController();
@@ -19,7 +20,6 @@ public class FilterUsersByAgeSpec {
         User[] age33Users = userController.filterUsersByAge(allUsers, 33);
         assertEquals("Incorrect number of users with age 33", 1, age33Users.length);
     }
-
     @Test
     public void listUsersWithAgeFilter() throws IOException {
         UserController userController = new UserController();
