@@ -69,10 +69,6 @@ is it displayed?
 
 :question: Where is the client-side JavaScript defined? Name the file(s) in which it is used.
 
-:question: What is the purpose of build.gradle file? What's in it, and what does it mean?
-
-:question: What's in .gitgnore file? What's the purpose of it?
-
 ## Use ZenHub to support Agile development
 
 We'll be using ZenHub to augment the standard GitHub issues
@@ -207,3 +203,21 @@ api/todos?owner=Blanche&status=complete&limit=12
 
 which would return the first 12 completed to-dos owned by
 Blanche.
+
+## Extending the client functionality
+
+Once you've made some progress in setting up your API, your
+group should implement a new web page to make accessing your
+API easier.
+
+* Create a new HTML file called `todo.html`
+* Create a new Javascript file called `todo.js`
+
+> Make sure you create these files in the right locations! ;)
+
+* Use basic HTML form elements and javascript to create a simple
+interface for making requests to your API.
+
+> You don't have to worry about actually using the returned JSON,
+just dumping it onto the web page (like in the 'users' example) is fine.
+
