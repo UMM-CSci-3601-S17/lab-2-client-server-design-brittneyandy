@@ -21,6 +21,10 @@ var mainTodoFunction = function(url) {
     });
 }
 
+var BuildUrl = function(url) {
+
+}
+
 var getAllTodos = function () {
     mainTodoFunction("");
 }
