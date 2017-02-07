@@ -13,7 +13,9 @@ window.onload = function() {
     element.addEventListener("click", getAllTodos, true);
 
     var ID = document.getElementById('_id');
-    element.addEventListener("click",getTodosByID, true);
+    ID.addEventListener("click",getTodosByID, true);
+
+    var text = document.getElementById('input1').value;
 }
 
 
