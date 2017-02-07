@@ -13,19 +13,25 @@
     <main>
         <button type="button" id="getAll">Get All Todos</button><br>
 
+        <button onclick="getTodosByComplete()">Get completed Todos</button><br>
+
+        <button onclick="getTodosByIncomplete()">Get incompleted Todos</button> <br>
+
         <input type="text" id="input1"/>
         <button onclick = "getTodosByID()">Get todos for ID</button><br>
 
 
         <input type="text" id="input2"/>
-        <button onclick="getTodosByLimit()">Get Limited Todos</button><br>
+        <button onclick="getTodosByLimit()">Filter by a limit</button><br>
 
         <input type="text" id="input3"/>
-        <button onclick="getTodosByBody()">Get limited Todos by body</button><br>
+        <button onclick="getTodosByBody()">Filter by what body contains</button><br>
 
-        <button onclick="getTodosByComplete()">Get completed Todos</button><br>
+        <input type="text" id="input4"/>
+        <button onclick="getTodosByOwner()">Filter by Owner</button><br>
 
-        <button onclick="getTodosByIncomplete()">Get incompleted Todos</button>
+        <input type="text" id="input5"/>
+        <button onclick="getTodosByCategory()">Filter by Category</button><br>
 
     </main>
 

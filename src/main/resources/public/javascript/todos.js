@@ -40,6 +40,16 @@ var getTodosByBody = function() {
     mainTodoFunction("?contains=" + bodyText);
 }
 
+var getTodosByOwner = function() {
+    var ownerText = document.getElementById('input4').value;
+    mainTodoFunction("?owner=" + ownerText);
+}
+
+var getTodosByCategory = function() {
+    var categoryText = document.getElementById('input5').value;
+    mainTodoFunction("?category=" + categoryText);
+}
+
 var getTodosByComplete = function() {
     mainTodoFunction("?status=complete");
 }
