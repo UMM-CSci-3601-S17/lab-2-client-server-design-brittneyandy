@@ -21,8 +21,24 @@ var mainTodoFunction = function(url) {
     });
 }
 
-var BuildUrl = function(url) {
+var sortByTrue = function() {
+    mainTodoFunction("?orderBy=status");
+}
 
+var sortByID = function(){
+    mainTodoFunction("?orderBy=_id")
+}
+
+var sortByCategory = function() {
+    mainTodoFunction("?orderBy=category");
+}
+
+var sortByOwner = function() {
+    mainTodoFunction("?orderBy=owner");
+}
+
+var sortByBody = function() {
+    mainTodoFunction("?orderBy=Body");
 }
 
 var getAllTodos = function () {
