@@ -15,7 +15,10 @@ window.onload = function() {
     var ID = document.getElementById('_id');
     ID.addEventListener("click",getTodosByID, true);
 
-    var text = document.getElementById('input1').value;
+    var limitElement = document.getElementById('getLimitOfTodos');
+    limitElement.addEventListener("click",getTodosByLimit, true);
+
+
 }
 
 
@@ -30,14 +33,20 @@ var getAllTodos = function() {
 }
 
 var getTodosByID = function() {
+    var text = document.getElementById('input1').value;
     var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos/_id", function(returned_json){
+    HttpThingy.get("/api/todos/" + text, function(returned_json){
         document.getElementById('jsonDump').innerHTML = returned_json;
     });
 }
-/**
- * Created by lauxx265 on 2/5/17.
- */
+
+var getTodosByLimit = function() {
+    var limitText = document.getElementById('input2').value;
+    var HttpThingy = new HttpClient();
+    HttpThingy.get("/api/todos?limit=" + limitText, function(returned_json){
+        document.getElementById('jsonDump').innerHTML = returned_json;
+    });
+}
 
 /**
  * Wrapper to make generating http requests easier. Should maybe be moved

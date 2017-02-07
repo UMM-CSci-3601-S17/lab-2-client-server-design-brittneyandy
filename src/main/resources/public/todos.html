@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Todos</title>
+    <script type="text/javascript" src="javascript/todos.js"> </script>
 </head>
 <body>
     <header>
         <h1>This is a place where you can see everyone's todos!</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="Alltodos.html">All Todos</a></li>
-            <li><a href="TodosByID.html">todoByID</a></li>
-            <li><a href="Owner.html">todosByOwner</a></li>
-            <li><a href="Category.html">todosByCategory</a></li>
-            <li><a href="Status.html">todosByStatus</a></li>
-            <li><a href="Combination.html">todosByCombination</a></li>
-            <li><a href="Limit.html">todosByLimit</a></li>
-        </ul>
-    </nav>
+
     <main>
+        <button type="button" id="getAll">Get All Todos</button>
+
+        <input type="text" id="input1"/>
+        <button type="button" id="getTodosByID">Get todos for ID</button>
+
+
+        <input type="text" id="input2"/>
+        <button type="button" id="getLimitOfTodos">Get Limited Todos</button>
 
     </main>
+
+    <hr/>
+
+    <div id="jsonDump" style="margin-top:20px"> Json will go here </div>
 </body>
 </html>
