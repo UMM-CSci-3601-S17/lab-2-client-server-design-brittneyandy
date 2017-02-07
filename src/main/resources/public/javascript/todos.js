@@ -35,6 +35,19 @@ var getTodosByLimit = function() {
     mainTodoFunction("?limit=" + limitText);
     }
 
+var getTodosByBody = function() {
+    var bodyText = document.getElementById('input3').value;
+    mainTodoFunction("?contains=" + bodyText);
+}
+
+var getTodosByComplete = function() {
+    mainTodoFunction("?status=complete");
+}
+
+var getTodosByIncomplete = function() {
+    mainTodoFunction("?status=incomplete");
+}
+
 /**
  * Wrapper to make generating http requests easier. Should maybe be moved
  * somewhere else in the future!.
