@@ -12,41 +12,28 @@ window.onload = function() {
     var element = document.getElementById('getAll');
     element.addEventListener("click", getAllTodos, true);
 
-    var ID = document.getElementById('_id');
-    ID.addEventListener("click",getTodosByID, true);
-
-    var limitElement = document.getElementById('getLimitOfTodos');
-    limitElement.addEventListener("click",getTodosByLimit, true);
-
-
 }
 
-
-/**
- * Function to get all the users!
- */
-var getAllTodos = function() {
+var mainTodoFunction = function(url) {
     var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos", function(returned_json){
+    HttpThingy.get("/api/todos" + url, function(returned_json){
         document.getElementById('jsonDump').innerHTML = returned_json;
     });
+}
+
+var getAllTodos = function () {
+    mainTodoFunction("");
 }
 
 var getTodosByID = function() {
     var text = document.getElementById('input1').value;
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos/" + text, function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
+  mainTodoFunction("/" + text);
 }
 
 var getTodosByLimit = function() {
     var limitText = document.getElementById('input2').value;
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos?limit=" + limitText, function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
-}
+    mainTodoFunction("?limit=" + limitText);
+    }
 
 /**
  * Wrapper to make generating http requests easier. Should maybe be moved
