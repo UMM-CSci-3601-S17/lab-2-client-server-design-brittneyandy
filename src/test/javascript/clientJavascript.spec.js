@@ -2,7 +2,7 @@
 
 describe('testing basic functions', function(){
     it('should return the correct string length', function(){
-        expect(testStringLength("kittens")).toEqual(7);
+        expect(testStringLength("kittens")).toEqual(10);
     });
 
     it('returnKittens should return kittens', function(){
