@@ -12,30 +12,71 @@ window.onload = function() {
     var element = document.getElementById('getAll');
     element.addEventListener("click", getAllTodos, true);
 
-    var ID = document.getElementById('_id');
-    element.addEventListener("click",getTodosByID, true);
 }
 
-
-/**
- * Function to get all the users!
- */
-var getAllTodos = function() {
+var mainTodoFunction = function(url) {
     var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos", function(returned_json){
+    HttpThingy.get("/api/todos" + url, function(returned_json){
         document.getElementById('jsonDump').innerHTML = returned_json;
     });
+}
+
+var sortByTrue = function() {
+    mainTodoFunction("?orderBy=status");
+}
+
+var sortByID = function(){
+    mainTodoFunction("?orderBy=_id")
+}
+
+var sortByCategory = function() {
+    mainTodoFunction("?orderBy=category");
+}
+
+var sortByOwner = function() {
+    mainTodoFunction("?orderBy=owner");
+}
+
+var sortByBody = function() {
+    mainTodoFunction("?orderBy=Body");
+}
+
+var getAllTodos = function () {
+    mainTodoFunction("");
 }
 
 var getTodosByID = function() {
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos/_id", function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
+    var text = document.getElementById('input1').value;
+  mainTodoFunction("/" + text);
 }
-/**
- * Created by lauxx265 on 2/5/17.
- */
+
+var getTodosByLimit = function() {
+    var limitText = document.getElementById('input2').value;
+    mainTodoFunction("?limit=" + limitText);
+    }
+
+var getTodosByBody = function() {
+    var bodyText = document.getElementById('input3').value;
+    mainTodoFunction("?contains=" + bodyText);
+}
+
+var getTodosByOwner = function() {
+    var ownerText = document.getElementById('input4').value;
+    mainTodoFunction("?owner=" + ownerText);
+}
+
+var getTodosByCategory = function() {
+    var categoryText = document.getElementById('input5').value;
+    mainTodoFunction("?category=" + categoryText);
+}
+
+var getTodosByComplete = function() {
+    mainTodoFunction("?status=complete");
+}
+
+var getTodosByIncomplete = function() {
+    mainTodoFunction("?status=incomplete");
+}
 
 /**
  * Wrapper to make generating http requests easier. Should maybe be moved

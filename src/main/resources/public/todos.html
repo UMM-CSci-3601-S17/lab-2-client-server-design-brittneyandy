@@ -3,24 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Todos</title>
+    <script type="text/javascript" src="javascript/todos.js"> </script>
 </head>
 <body>
     <header>
         <h1>This is a place where you can see everyone's todos!</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="Alltodos.html">All Todos</a></li>
-            <li><a href="TodosByID.html">todoByID</a></li>
-            <li><a href="Owner.html">todosByOwner</a></li>
-            <li><a href="Category.html">todosByCategory</a></li>
-            <li><a href="Status.html">todosByStatus</a></li>
-            <li><a href="Combination.html">todosByCombination</a></li>
-            <li><a href="Limit.html">todosByLimit</a></li>
-        </ul>
-    </nav>
+
     <main>
+        <button type="button" id="getAll">Get All Todos</button><br>
+
+        <button onclick="getTodosByComplete()">Get completed Todos</button><br>
+
+        <button onclick="getTodosByIncomplete()">Get incompleted Todos</button> <br>
+
+        <input type="text" id="input1"/>
+        <button onclick = "getTodosByID()">Get todos for ID</button><br>
+
+        <input type="text" id="input2"/>
+        <button onclick="getTodosByLimit()">Filter by a limit</button><br>
+
+        <input type="text" id="input3"/>
+        <button onclick="getTodosByBody()">Filter by what body contains</button><br>
+
+        <input type="text" id="input4"/>
+        <button onclick="getTodosByOwner()">Filter by Owner</button><br>
+
+        <input type="text" id="input5"/>
+        <button onclick="getTodosByCategory()">Filter by Category</button><br>
+
+        <button onclick = "sortByTrue()">Sort By Completion</button><br>
+
+        <button onclick = "sortByCategory()">Sort By Category</button><br>
+
+        <button onclick = "sortByOwner()">Sort By Owner</button><br>
+
+        <button onclick = "sortByBody()">Sort By Body</button><br>
+
+        <button onclick = "sortByID()">Sort By ID</button><br>
+
+
 
     </main>
+
+    <hr/>
+
+    <div id="jsonDump" style="margin-top:20px"> Json will go here </div>
 </body>
 </html>
