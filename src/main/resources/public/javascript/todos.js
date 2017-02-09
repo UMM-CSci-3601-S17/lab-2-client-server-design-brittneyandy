@@ -46,27 +46,27 @@ var getAllTodos = function () {
 }
 
 var getTodosByID = function() {
-    var text = document.getElementById('input1').value;
+    var text = document.getElementById('_id').value;
   mainTodoFunction("/" + text);
 }
 
 var getTodosByLimit = function() {
-    var limitText = document.getElementById('input2').value;
+    var limitText = document.getElementById('limitNumber').value;
     mainTodoFunction("?limit=" + limitText);
     }
 
 var getTodosByBody = function() {
-    var bodyText = document.getElementById('input3').value;
+    var bodyText = document.getElementById('bodyWords').value;
     mainTodoFunction("?contains=" + bodyText);
 }
 
 var getTodosByOwner = function() {
-    var ownerText = document.getElementById('input4').value;
+    var ownerText = document.getElementById('OwnerName').value;
     mainTodoFunction("?owner=" + ownerText);
 }
 
 var getTodosByCategory = function() {
-    var categoryText = document.getElementById('input5').value;
+    var categoryText = document.getElementById('categorizing').value;
     mainTodoFunction("?category=" + categoryText);
 }
 
@@ -76,6 +76,36 @@ var getTodosByComplete = function() {
 
 var getTodosByIncomplete = function() {
     mainTodoFunction("?status=incomplete");
+}
+
+var combination = function() {
+    var statusComb = document.getElementById('statusComb').value;
+    var OwnerNameComb = document.getElementById('OwnerNameComb').value;
+    var CategoryNameComb = document.getElementById('CategoryNameComb').value;
+    var bodyComb = document.getElementById('bodyComb').value;
+    var LimitComb = document.getElementById('LimitComb').value;
+    var urlForOwner = "&owner=";
+    var urlForCategory = "&category=";
+    var urlForBody = "&body=";
+    var urlForLimit = "&limit=";
+
+    if(OwnerNameComb == ("")){
+        urlForOwner= "";
+    }
+
+    if(CategoryNameComb == ("")){
+        urlForCategory= "";
+    }
+
+    if( bodyComb == ("")){
+        urlForBody= "";
+    }
+
+    if(LimitComb == ("")){
+        urlForLimit= "";
+    }
+
+    mainTodoFunction("?status=" + statusComb + urlForOwner + OwnerNameComb + urlForCategory + CategoryNameComb + urlForBody + bodyComb + urlForLimit + LimitComb);
 }
 
 /**

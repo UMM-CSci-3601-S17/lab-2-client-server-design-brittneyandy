@@ -8,6 +8,8 @@
 <body>
     <header>
         <h1>This is a place where you can see everyone's todos!</h1>
+        <h2>What does lettuce have to pass to become a lawyer</h2>
+        <h2>The salad bar</h2>
     </header>
 
     <main>
@@ -17,21 +19,24 @@
 
         <button onclick="getTodosByIncomplete()">Get incompleted Todos</button> <br>
 
-        <input type="text" id="input1"/>
+        <input type="text" id="_id"/>
         <button onclick = "getTodosByID()">Get todos for ID</button><br>
 
-        <input type="text" id="input2"/>
+        <input type="text" id="limitNumber"/>
         <button onclick="getTodosByLimit()">Filter by a limit</button><br>
 
-        <input type="text" id="input3"/>
+        <input type="text" id="bodyWords"/>
         <button onclick="getTodosByBody()">Filter by what body contains</button><br>
 
-        <input type="text" id="input4"/>
+        <input type="text" id="OwnerName"/>
         <button onclick="getTodosByOwner()">Filter by Owner</button><br>
 
-        <input type="text" id="input5"/>
+        <input type="text" id="categorizing"/>
         <button onclick="getTodosByCategory()">Filter by Category</button><br>
 
+        <hr/>
+        This is where you can sort by field
+        <br>
         <button onclick = "sortByTrue()">Sort By Completion</button><br>
 
         <button onclick = "sortByCategory()">Sort By Category</button><br>
@@ -42,7 +47,16 @@
 
         <button onclick = "sortByID()">Sort By ID</button><br>
 
+        <hr/>
+        This is where you can combine your filtering
+        <br>
 
+        <input type = "text" id = "statusComb" /> Status (Don't capitalize)<br>
+        <input type = "text" id = "OwnerNameComb" /> Owner <br>
+        <input type = "text" id = "CategoryNameComb"/> Category<br>
+        <input type = "text" id = "bodyComb" /> Body <br>
+        <input type = "text" id = "LimitComb"/> Limit<br>
+        <button onclick = "combination()">Combination</button>
 
     </main>
 
